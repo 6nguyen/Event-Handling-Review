@@ -3,10 +3,7 @@ package eventHandlingPackage;
 import java.awt.FlowLayout;				// imports layout
 import java.awt.event.ActionListener;	// imports action listener
 import java.awt.event.ActionEvent;		// imports types of events (clicks, hovers, enter, etc)
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;				// imports a customizable window
 import javax.swing.JTextField;			// a generic text field
 import javax.swing.JPasswordField;		// text field representing characters as asterisks
@@ -15,7 +12,6 @@ import javax.swing.JButton;				// imports a customizable button
 import javax.swing.Icon;				// imports an icon
 import javax.swing.ImageIcon;			// imports an image
 
-import com.sun.prism.Image;
 
 
 public class EventHandler extends JFrame{
