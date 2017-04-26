@@ -3,6 +3,7 @@ package eventHandlingPackage;
 import java.awt.FlowLayout;				// imports layout
 import java.awt.event.ActionListener;	// imports action listener
 import java.awt.event.ActionEvent;		// imports types of events (clicks, hovers, enter, etc)
+import java.awt.Insets;					// imports button margins
 
 import javax.swing.JFrame;				// imports a customizable window
 import javax.swing.JTextField;			// a generic text field
@@ -50,11 +51,13 @@ public class EventHandler extends JFrame{
 		String path1 = "C:\\Users\\gnguy\\Desktop\\Java\\EventHandling\\src\\eventHandlingPackage\\icon1.png";
 		String path2 = "C:\\Users\\gnguy\\Desktop\\Java\\EventHandling\\src\\eventHandlingPackage\\icon2.png";
 		
-		Icon icon1 = new ImageIcon(path1);			// import icon1
-		Icon icon2 = new ImageIcon(path2);			// import icon2
-		imageButton = new JButton("Image Button", icon1);			// create button with icon1 as image
+		Icon icon1 = new ImageIcon(path1);					// import icon1
+		Icon icon2 = new ImageIcon(path2);					// import icon2
+		imageButton = new JButton(icon1);	// create button with icon1 as image
 		
-		imageButton.setRolloverIcon(icon2);			// set icon2 to appear on hover
+		imageButton.setMargin(new Insets(0,0,0,0));			// removes margins between image and button border
+		imageButton.setBorder(null);						// removes button borders
+		imageButton.setRolloverIcon(icon2);					// set icon2 to appear on hover
 		add(imageButton);
 		
 		// Declare myHandler object before creating the myHandler class
@@ -110,7 +113,7 @@ public class EventHandler extends JFrame{
 				fieldString = String.format("You clicked %s!", event.getActionCommand());
 			}
 			else if (event.getSource()==imageButton){
-				fieldString = String.format("You clicked %s!", event.getActionCommand());
+				fieldString = String.format("You clicked Image Button!");
 			}
 			JOptionPane.showMessageDialog(null, fieldString);
 		}
