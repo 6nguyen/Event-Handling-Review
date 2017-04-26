@@ -3,11 +3,20 @@ package eventHandlingPackage;
 import java.awt.FlowLayout;				// imports layout
 import java.awt.event.ActionListener;	// imports action listener
 import java.awt.event.ActionEvent;		// imports types of events (clicks, hovers, enter, etc)
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;				// imports a customizable window
 import javax.swing.JTextField;			// a generic text field
 import javax.swing.JPasswordField;		// text field representing characters as asterisks
 import javax.swing.JOptionPane;			// imports display window
+import javax.swing.JButton;				// imports a customizable button
+import javax.swing.Icon;				// imports an icon
+import javax.swing.ImageIcon;			// imports an image
+
+import com.sun.prism.Image;
+
 
 public class EventHandler extends JFrame{
 	
@@ -15,6 +24,9 @@ public class EventHandler extends JFrame{
 	private JTextField item2;
 	private JTextField item3;
 	private JPasswordField passwordField;
+	
+	private JButton button1;
+	private JButton imageButton;
 	
 // CONSTRUCTOR =======================================
 	
@@ -35,12 +47,29 @@ public class EventHandler extends JFrame{
 		passwordField = new JPasswordField("password");	// "password" appears in asterisks
 		add(passwordField);
 		
+		button1 = new JButton("Normal Button");			// create a simple button with text
+		add(button1);
+		
+		
+		String path1 = "C:\\Users\\gnguy\\Desktop\\Java\\EventHandling\\src\\eventHandlingPackage\\icon1.png";
+		String path2 = "C:\\Users\\gnguy\\Desktop\\Java\\EventHandling\\src\\eventHandlingPackage\\icon2.png";
+		
+		Icon icon1 = new ImageIcon(path1);			// import icon1
+		Icon icon2 = new ImageIcon(path2);			// import icon2
+		imageButton = new JButton("Image Button", icon1);			// create button with icon1 as image
+		
+		imageButton.setRolloverIcon(icon2);			// set icon2 to appear on hover
+		add(imageButton);
+		
 		// Declare myHandler object before creating the myHandler class
 		myHandler eventHandler = new myHandler();
 		item1.addActionListener(eventHandler);
 		item2.addActionListener(eventHandler);
 		item3.addActionListener(eventHandler);
 		passwordField.addActionListener(eventHandler);	
+		
+		button1.addActionListener(eventHandler);
+		imageButton.addActionListener(eventHandler);
 		
 	} // End of EventHandler Constructor
 	
@@ -81,6 +110,12 @@ public class EventHandler extends JFrame{
 				fieldString = String.format("password field is : %s", event.getActionCommand());
 			}
 			
+			else if (event.getSource()==button1){
+				fieldString = String.format("You clicked %s!", event.getActionCommand());
+			}
+			else if (event.getSource()==imageButton){
+				fieldString = String.format("You clicked %s!", event.getActionCommand());
+			}
 			JOptionPane.showMessageDialog(null, fieldString);
 		}
 	}
